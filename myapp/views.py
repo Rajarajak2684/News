@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 from datetime import datetime, timedelta
+from newsproj.settings import NEWS_API_KEY
 
 # Create your views here.
 def index_view(request):
@@ -8,7 +9,7 @@ def index_view(request):
     
     print(from_date.strftime('%Y-%m-%d'))
     
-    request_url=f"https://newsapi.org/v2/everything?q=delhi&from={from_date.strftime('%Y-%m-%d')}&sortBy=publishedAt&apiKey=5185ffd4aad846d798b1187a1713eb6b"
+    request_url=f"https://newsapi.org/v2/everything?q=delhi&from={from_date.strftime('%Y-%m-%d')}&sortBy=publishedAt&apiKey={NEWS_API_KEY}"
     news_data=requests.get(request_url).json()
     
     baja={
@@ -26,7 +27,7 @@ def search_menu(request):
         from_date=(datetime.now() - timedelta(days=1))
         
         
-        request_url=f"https://newsapi.org/v2/everything?q={query}&from={from_date.strftime('%Y-%m-%d')}&sortBy=publishedAt&apiKey=5185ffd4aad846d798b1187a1713eb6b"
+        request_url=f"https://newsapi.org/v2/everything?q={query}&from={from_date.strftime('%Y-%m-%d')}&sortBy=publishedAt&apiKey={NEWS_API_KEY}"
         news_data=requests.get(request_url).json()
     
     
