@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-qg*jt06r@#r1@fg_%l916rg0ohi7@ugem3jwj898#ah!)llh9c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['news-pc2s.onrender.com','*']
+CSRF_TRUSTED_ORIGINS=["https://news-pc2s.onrender.com"]
 
 load_dotenv()
 NEWS_API_KEY=os.getenv('API_KEY')
