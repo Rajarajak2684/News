@@ -38,3 +38,16 @@ def search_menu(request):
     return render(request,'pages/index.html',baja)
 
     # return redirect('index_page')
+    
+def topnav(request,menu):
+    from_date=(datetime.now() - timedelta(days=1))
+    
+    
+    request_url=f"https://newsapi.org/v2/everything?q={menu}&from={from_date.strftime('%Y-%m-%d')}&sortBy=publishedAt&apiKey={NEWS_API_KEY}"
+    news_data=requests.get(request_url).json()
+    
+    baja={
+        'raja':news_data.get("articles")
+    }
+    
+    return render(request,'pages/index.html',baja)

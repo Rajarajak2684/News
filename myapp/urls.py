@@ -4,5 +4,6 @@ from .views import *
 urlpatterns=[
     path('',index_view,name='index_page'),
     path('search/',search_menu,name="search_form"),
+    path('menu_search/<str:menu>/',topnav,name="search")
              
  ]
